@@ -9,6 +9,9 @@ var camera, scene, renderer;
 var geometry, material, mesh;
 let d = 5;
 
+document.body.style.margin = 0;
+document.body.style.oveflow = "hidden";
+
 function parseLayout(layout) {
     let {
         textures: in_textures = {},
@@ -82,24 +85,8 @@ function init() {
     camera.position.set(-d, d, d);
     camera.lookAt(scene.position);
 
-    var gridHelper = new THREE.GridHelper(10, 10, "#fff0", "#fff0");
-    //scene.add(gridHelper);
-
-    geometry = new THREE.BoxGeometry(1, 1, 1);
-    material = new shaders["Halftone"]();
-    mesh = new THREE.Mesh(geometry, material);
-    mesh.position.y = .5;
-    scene.add(mesh);
-
-    var geo2 = new THREE.EdgesGeometry(geometry);
-    var mat2 = new THREE.LineBasicMaterial({
-        color: 0x000000,
-        linewidth: 3,
-        linejoin: "round",
-    });
-    var wireframe = new THREE.LineSegments(geo2, mat2);
-    wireframe.position.y = .5;
-    scene.add(wireframe);
+    var gridHelper = new THREE.GridHelper(10, 10, "rgba(0,0,0,0.2)", "rgba(0,0,0,0.1)");
+    scene.add(gridHelper);
 
     initiateInput(camera, scene);
     parseLayout(layout);
@@ -120,7 +107,5 @@ function init() {
 
 function animate() {
     requestAnimationFrame(animate);
-    //mesh.rotation.x += 0.01;
-    //mesh.rotation.y += 0.02;
     renderer.render(scene, camera);
 }

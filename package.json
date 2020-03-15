@@ -1,14 +1,14 @@
 {
-  "name": "isometric2",
-  "version": "1.0.0",
-  "description": "",
+  "name": "isometric",
+  "version": "0.0.1",
+  "description": "generate simple isometric scenes from json",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "webpack-dev-server",
-    "lint": "npx eslint src/"
+    "build": "webpack",
+    "lint": "eslint src/"
   },
-  "author": "",
+  "author": "hitcherland",
   "license": "ISC",
   "dependencies": {
     "three": "^0.114.0"

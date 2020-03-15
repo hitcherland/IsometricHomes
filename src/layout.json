@@ -20,6 +20,17 @@
                 "offset": 4,
                 "doubleSided": true
             }
+        },
+        "halftone_gray": {
+            "group": "shader",
+            "material": "Halftone",
+            "attributes": {
+                "foregroundColor": "#000",
+                "backgroundColor": "#fff",
+                "density": 8,
+                "offset": 4,
+                "doubleSided": true
+            }
         }
     },
     "scene": {
@@ -35,7 +46,7 @@
                         {"x": 5, "y": 0, "z": -5}
                     ],
                     "height": 0.5,
-                    "width": 0.2,
+                    "width": 0.6,
                     "material": "halftone_brown"
                 }
             },
@@ -51,6 +62,24 @@
                         {"x": 4.9, "y": 0, "z": -4.9}
                     ],
                     "material": "halftone_green"
+                }
+            },
+            {
+                "name": "ground floor walls",
+                "template": "Wall",
+                "position": {"x": 0, "y": 0, "z": -1},
+                "attributes": {
+                    "width": 1,
+                    "height": 0.1,
+                    "points": [
+                        {"x": -2.0, "y": 0, "z": 0.0},
+                        {"x": 2.0, "y": 0, "z": 0.0},
+                        {"x": 2.0, "y": 0, "z": 2.0},
+                        {"x": 1.0, "y": 0, "z": 2.0},
+                        {"x": 1.0, "y": 0, "z": 3.0},
+                        {"x": -2.0, "y": 0, "z": 3.0}
+                    ],
+                    "material": "halftone_gray"
                 }
             }
         ]

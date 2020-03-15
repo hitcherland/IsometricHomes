@@ -8,7 +8,9 @@ function Halftone(specs = {}) {
         backgroundColor = "#fff", 
         density = 2,
         offset = 0,
-        doubleSided = false
+        doubleSided = false,
+        lightStrength = 0.5,
+        lightDirection = {x: 0.85, y: 0.6, z: 0.75}
     } = specs;
 
     let material = new THREE.ShaderMaterial({
@@ -16,7 +18,16 @@ function Halftone(specs = {}) {
             foregroundColor: {value: new THREE.Color(foregroundColor)},
             backgroundColor: {value: new THREE.Color(backgroundColor)},
             density: {value: density},
-            offset: {value: offset}
+            offset: {value: offset},
+            lightStrength: {value: lightStrength},
+            lightDirection: {
+                value: new THREE.Vector3(
+                    lightDirection.x,
+                    lightDirection.y,
+                    lightDirection.z
+                )
+            }
+                                                      
         },
         vertexShader: vertex,
         fragmentShader: fragment,

@@ -24,7 +24,7 @@ function Floor(specs) {
     });
     var wireframe = new THREE.LineSegments(geo2, mat2);
 
-    mesh.add(wireframe);
+    //mesh.add(wireframe);
     mesh.rotation.x = -Math.PI / 2;
     return mesh;
 }

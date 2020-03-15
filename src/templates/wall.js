@@ -18,8 +18,8 @@ function Wall(specs) {
 
     let extrudeSettings = {
         depth: 1,
-        curveSegments: 12,
-        steps: points.length,
+        curveSegments: 1,
+        steps: points.length * 8,
         bevelEnabled: false,
         extrudePath: curve
     };
@@ -44,7 +44,7 @@ function Wall(specs) {
     });
     var wireframe = new THREE.LineSegments(geo2, mat2);
 
-    mesh.add(wireframe);
+    //mesh.add(wireframe);
     return mesh;
 }
 
