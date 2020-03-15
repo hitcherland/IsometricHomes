@@ -10,7 +10,7 @@ var geometry, material, mesh;
 let d = 5;
 
 document.body.style.margin = 0;
-document.body.style.oveflow = "hidden";
+document.body.style.overflow = "hidden";
 
 function parseLayout(layout) {
     let {
