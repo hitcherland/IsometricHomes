@@ -1,0 +1,58 @@
+{
+    "materials": {
+        "halftone_brown": {
+            "group": "shader",
+            "material": "Halftone",
+            "attributes": {
+                "foregroundColor": "#000",
+                "backgroundColor": "#8B4513",
+                "density": 8,
+                "offset": 4
+            }
+        },
+        "halftone_green": {
+            "group": "shader",
+            "material": "Halftone",
+            "attributes": {
+                "foregroundColor": "#7cfc00",
+                "backgroundColor": "#567d46",
+                "density": 8,
+                "offset": 4,
+                "doubleSided": true
+            }
+        }
+    },
+    "scene": {
+        "objects": [
+            {
+                "name": "garden walls",
+                "template": "Wall",
+                "attributes": {
+                    "points": [
+                        {"x": -5, "y": 0, "z": -5},
+                        {"x": -5, "y": 0, "z": 5},
+                        {"x": 5, "y": 0, "z": 5},
+                        {"x": 5, "y": 0, "z": -5}
+                    ],
+                    "height": 0.5,
+                    "width": 0.2,
+                    "material": "halftone_brown"
+                }
+            },
+            {
+                "name": "grass",
+                "template": "Floor",
+                "position": {"x": 0, "y": 0, "z": 0},
+                "attributes": {
+                    "points": [
+                        {"x": -4.9, "y": 0, "z": -4.9},
+                        {"x": -4.9, "y": 0, "z": 4.9},
+                        {"x": 4.9, "y": 0, "z": 4.9},
+                        {"x": 4.9, "y": 0, "z": -4.9}
+                    ],
+                    "material": "halftone_green"
+                }
+            }
+        ]
+    }
+}
