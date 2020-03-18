@@ -16,16 +16,8 @@ function Floor(specs) {
     let geometry = new THREE.ShapeGeometry(shape);
     let mesh =  new THREE.Mesh(geometry, material);
 
-    var geo2 = new THREE.EdgesGeometry(geometry);
-    var mat2 = new THREE.LineBasicMaterial({
-        color: 0x000000,
-        linewidth: 2,
-        linejoin: "round",
-    });
-    var wireframe = new THREE.LineSegments(geo2, mat2);
-
     //mesh.add(wireframe);
-    mesh.rotation.x = -Math.PI / 2;
+    mesh.rotation.x = Math.PI / 2;
     return mesh;
 }
 

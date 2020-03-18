@@ -1,18 +1,33 @@
+const THREE = require('three/build/three.module.js');
 module.exports = `
 uniform vec3 foregroundColor;
 uniform vec3 backgroundColor;
 uniform float density;
 uniform float offset;
+uniform float blockSize;
 
-varying float vLighting;
+#include <common>
+#include <packing>
+#include <lights_pars_begin>
+#include <shadowmap_pars_fragment>
+#include <shadowmask_pars_fragment>
+
+float int_divide(float a, float b) {
+    return a - mod(a, b);
+}
 
 void main() {
-    //gl_FragCoord
-    float x_offset = mod(gl_FragCoord.y, density);
-    bool x = mod(gl_FragCoord.x + offset * x_offset, density) <= 0.5;
+    float shadow = (receiveShadow ? getShadowMask(): 1.0);
+    float X = int_divide(gl_FragCoord.x, blockSize);
+    float Y = int_divide(gl_FragCoord.y, blockSize);
+
+    float x_offset = mod(Y, density);
+    bool x = mod(X + offset * x_offset, density) <= 0.5;
     if (x) {
-        gl_FragColor = vec4(foregroundColor * vLighting, 1.0);
+        vec3 light = (0.8 + 0.2 * shadow) * foregroundColor;
+        gl_FragColor = vec4(light, 1.0);
     } else {
-        gl_FragColor = vec4(backgroundColor * vLighting, 1.0);
+        vec3 light = (0.8 + 0.2 * shadow) * backgroundColor;
+        gl_FragColor = vec4(light, 1.0);
     }
 }`

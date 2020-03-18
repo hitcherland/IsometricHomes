@@ -17,7 +17,19 @@
                 "foregroundColor": "#7cfc00",
                 "backgroundColor": "#567d46",
                 "density": 8,
-                "offset": 4,
+                "offset": 3,
+                "doubleSided": true,
+                "blockSize": 1 
+            }
+        },
+        "halftone_blue": {
+            "group": "shader",
+            "material": "Halftone",
+            "attributes": {
+                "foregroundColor": "#007cfc",
+                "backgroundColor": "#567d46",
+                "density": 8,
+                "offset": 3,
                 "doubleSided": true
             }
         },
@@ -27,17 +39,29 @@
             "attributes": {
                 "foregroundColor": "#000",
                 "backgroundColor": "#fff",
+                "blockSize": 0,
                 "density": 8,
-                "offset": 4,
-                "doubleSided": true
+                "offset": 2
+            }
+        },
+        "halftone_gray2": {
+            "group": "shader",
+            "material": "Halftone",
+            "attributes": {
+                "foregroundColor": "#000",
+                "backgroundColor": "#fff",
+                "blockSize": 0,
+                "density": 8,
+                "offset": 6
             }
         }
+
     },
     "scene": {
         "objects": [
             {
                 "name": "garden walls",
-                "template": "Wall",
+                "template": "FlatWall",
                 "attributes": {
                     "points": [
                         {"x": -5, "y": 0, "z": -5},
@@ -46,7 +70,7 @@
                         {"x": 5, "y": 0, "z": -5}
                     ],
                     "height": 0.5,
-                    "width": 0.6,
+                    "width": 0.01,
                     "material": "halftone_brown"
                 }
             },
@@ -56,21 +80,35 @@
                 "position": {"x": 0, "y": 0, "z": 0},
                 "attributes": {
                     "points": [
-                        {"x": -4.9, "y": 0, "z": -4.9},
-                        {"x": -4.9, "y": 0, "z": 4.9},
-                        {"x": 4.9, "y": 0, "z": 4.9},
-                        {"x": 4.9, "y": 0, "z": -4.9}
+                        {"x": -5, "y": 0, "z": -5},
+                        {"x": -5, "y": 0, "z": 5},
+                        {"x": 5, "y": 0, "z": 5},
+                        {"x": 5, "y": 0, "z": -5}
                     ],
                     "material": "halftone_green"
                 }
             },
             {
+                "name": "first floor",
+                "template": "Floor",
+                "position": {"x": 0, "y": 1, "z": -1},
+                "attributes": {
+                    "points": [
+                        {"x": -2.0, "y": 0, "z": 0.0},
+                        {"x": 2.0, "y": 0, "z": 0.0},
+                        {"x": 2.0, "y": 0, "z": 2.0},
+                        {"x": 1.0, "y": 0, "z": 2.0},
+                        {"x": 1.0, "y": 0, "z": 3.0},
+                        {"x": -2.0, "y": 0, "z": 3.0}
+                    ],
+                    "material": "halftone_blue"
+                }
+            },
+            {
                 "name": "ground floor walls",
-                "template": "Wall",
+                "template": "FlatWall",
                 "position": {"x": 0, "y": 0, "z": -1},
                 "attributes": {
-                    "width": 1,
-                    "height": 0.1,
                     "points": [
                         {"x": -2.0, "y": 0, "z": 0.0},
                         {"x": 2.0, "y": 0, "z": 0.0},
@@ -81,7 +119,55 @@
                     ],
                     "material": "halftone_gray"
                 }
+            },
+            {
+                "name": "first floor walls",
+                "template": "FlatWall",
+                "position": {"x": 0, "y": 1, "z": -1},
+                "attributes": {
+                    "points": [
+                        {"x": -2.0, "y": 0, "z": 0.0},
+                        {"x": 2.0, "y": 0, "z": 0.0},
+                        {"x": 2.0, "y": 0, "z": 2.0},
+                        {"x": 1.0, "y": 0, "z": 2.0},
+                        {"x": -2.0, "y": 0, "z": 2.0}
+                    ],
+                    "material": "halftone_gray2"
+                }
+            },
+            {
+                "name": "first floor balcony walls",
+                "template": "FlatWall",
+                "position": {"x": 0, "y": 1, "z": -1},
+                "attributes": {
+                    "height": 0.5,
+                    "closePath": false,
+                    "points": [
+                        {"x": 1.0, "y": 0, "z": 2.0},
+                        {"x": 1.0, "y": 0, "z": 3.0},
+                        {"x": -2.0, "y": 0, "z": 3.0},
+                        {"x": -2.0, "y": 0, "z": 2.0}
+                    ],
+                    "material": "halftone_brown"
+                }
+            },
+            {
+                "name": "first floor roof",
+                "template": "SimpleRoof",
+                "position": {"x": 0, "y": 2, "z": -1},
+                "attributes": {
+                    "height": 1,
+                    "corners": [
+                        {"x": -2.2, "y": 0, "z": -0.2},
+                        {"x": 2.2, "y": 0, "z": -0.2},
+                        {"x": 2.2, "y": 0, "z": 2.2},
+                        {"x": -2.2, "y": 0, "z": 2.2}
+                    ],
+                    "material": "halftone_brown"
+                }
             }
+
+
         ]
     }
 }
